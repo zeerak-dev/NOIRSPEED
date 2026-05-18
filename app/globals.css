@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --noir-bg: #050505;
+  --noir-alt: #111111;
+  --noir-card: #181818;
+  --noir-border: #2A2A2A;
+  --noir-text: #F5F5F5;
+  --noir-muted: #A3A3A3;
+  --noir-red: #C1121F;
+  --noir-gold: #D4AF37;
+}
+
+html,
+body {
+  background-color: var(--noir-bg);
+  color: var(--noir-text);
+  font-feature-settings: "ss01", "cv01";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Premium scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--noir-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--noir-border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--noir-gold);
+}
+
+/* Soft selection in brand red */
+::selection {
+  background: rgba(193, 18, 31, 0.35);
+  color: var(--noir-text);
+}
+
+/* Hide the system cursor on hover-capable + fine-pointer devices
+   (desktops/laptops) — the CarCursor component replaces it.
+   Touch devices keep their native cursor / no cursor as usual. */
+@media (hover: hover) and (pointer: fine) {
+  html,
+  body,
+  a,
+  button,
+  input,
+  select,
+  textarea,
+  label,
+  [role="button"] {
+    cursor: none !important;
+  }
+}
