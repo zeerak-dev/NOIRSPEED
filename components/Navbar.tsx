@@ -18,9 +18,8 @@ import { motion, AnimatePresence } from "motion/react";
 
 const links = [
   { href: "/", label: "Home", sub: "The peak of luxury racing" },
-  { href: "/cars", label: "Cars", sub: "Twelve elite hypercars" },
+  { href: "/cars", label: "Cars", sub: "Eight elite hypercars" },
   { href: "/compare", label: "Compare", sub: "Side-by-side combat" },
-  { href: "/brands", label: "Brands", sub: "Ten prestigious houses" },
   { href: "/gallery", label: "Gallery", sub: "The visual archive" },
   { href: "/contact", label: "Contact", sub: "Press · collaborations" },
 ];

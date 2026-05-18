@@ -276,6 +276,3 @@ export const cars: Car[] = [
 /** Convenience: look up a car by its URL slug. */
 export const getCarBySlug = (slug: string): Car | undefined =>
   cars.find((c) => c.slug === slug);
-
-/** Convenience: every unique brand. */
-export const brands: string[] = Array.from(new Set(cars.map((c) => c.brand)));

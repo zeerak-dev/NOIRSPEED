@@ -1,10 +1,8 @@
 import Link from "next/link";
 import { cars } from "@/data/cars";
-import { brandData } from "@/data/brands";
 import { HeroFeatureCard } from "@/components/HeroFeatureCard";
 import { SupportCarCard } from "@/components/SupportCarCard";
 import { LoadingScreen } from "@/components/LoadingScreen";
-import { SectionHeader } from "@/components/SectionHeader";
 import { Reveal } from "@/components/Reveal";
 import { StatsCounter } from "@/components/StatsCounter";
 import { Marquee } from "@/components/Marquee";
@@ -42,6 +40,9 @@ const totalHorsepower = cars.reduce((sum, c) => {
   const match = c.horsepower.match(/[\d,]+/);
   return sum + (match ? parseInt(match[0].replace(/,/g, ""), 10) : 0);
 }, 0);
+
+// Unique brand count, derived from the cars data (used in the stats block).
+const uniqueBrandCount = new Set(cars.map((c) => c.brand)).size;
 
 export default function HomePage() {
   return (
@@ -147,35 +148,10 @@ export default function HomePage() {
           <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-8">
             <BigStat label="Top Speed" value={500} suffix=" km/h" />
             <BigStat label="Combined HP" value={totalHorsepower} suffix="" />
-            <BigStat label="Brands" value={brandData.length} suffix="" />
+            <BigStat label="Brands" value={uniqueBrandCount} suffix="" />
             <BigStat label="Hypercars" value={cars.length} suffix="" />
           </div>
         </div>
-      </section>
-
-      {/* TOP BRANDS */}
-      <section className="max-w-7xl mx-auto px-6 md:px-12 mt-32">
-        <SectionHeader
-          eyebrow="Manufacturers"
-          title="The Houses"
-          sub="A decade of obsession across ten of the most prestigious automotive houses on earth."
-        />
-        <Reveal className="mt-12 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
-          {brandData.map((b) => (
-            <Link
-              key={b.slug}
-              href={`/brands`}
-              className="group relative bg-noir-card border border-noir-border rounded-lg px-4 py-6 flex flex-col items-center justify-center text-center transition-all hover:border-noir-gold/40"
-            >
-              <p className="text-noir-text text-xs md:text-sm tracking-[0.25em] uppercase">
-                {b.name}
-              </p>
-              <p className="mt-1 text-noir-muted text-[9px] tracking-[0.3em] uppercase">
-                {b.country}
-              </p>
-            </Link>
-          ))}
-        </Reveal>
       </section>
 
       {/* COMPARE CTA */}
