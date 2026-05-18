@@ -29,6 +29,8 @@ const config: Config = {
         "noir-drift": "noir-drift 18s ease-in-out infinite alternate",
         "pulse-soft": "pulse-soft 4s ease-in-out infinite",
         marquee: "marquee 60s linear infinite",
+        "bg-drift-x": "bg-drift-x 28s ease-in-out infinite alternate",
+        "bg-drift-y": "bg-drift-y 36s ease-in-out infinite alternate",
       },
       keyframes: {
         "noir-drift": {
@@ -42,6 +44,14 @@ const config: Config = {
         marquee: {
           from: { transform: "translateX(0)" },
           to: { transform: "translateX(-100%)" },
+        },
+        "bg-drift-x": {
+          "0%": { transform: "translate3d(0, 0, 0) scale(1)" },
+          "100%": { transform: "translate3d(20vw, 6vh, 0) scale(1.08)" },
+        },
+        "bg-drift-y": {
+          "0%": { transform: "translate3d(0, 0, 0) scale(1)" },
+          "100%": { transform: "translate3d(-15vw, -8vh, 0) scale(1.05)" },
         },
       },
     },

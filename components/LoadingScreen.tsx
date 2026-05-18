@@ -71,21 +71,24 @@ export function LoadingScreen() {
           <div className="absolute inset-0 bg-noir-bg/60" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,rgba(0,0,0,0.85)_100%)]" />
 
-          {/* Centered content */}
-          <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
+          {/* Centered content.
+              Mobile text sizes are dialed down + tracking tightened so
+              "LUXURY RACING" and the long taglines fit cleanly without
+              wrapping mid-word or triggering horizontal scroll. */}
+          <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-5 max-w-full">
             <motion.p
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-noir-gold text-[10px] tracking-[0.5em] uppercase"
+              className="text-noir-gold text-[10px] tracking-[0.4em] md:tracking-[0.5em] uppercase"
             >
               NoirSpeed
             </motion.p>
             <motion.h1
-              initial={{ opacity: 0, letterSpacing: "0.5em" }}
-              animate={{ opacity: 1, letterSpacing: "0.25em" }}
+              initial={{ opacity: 0, letterSpacing: "0.3em" }}
+              animate={{ opacity: 1, letterSpacing: "0.18em" }}
               transition={{ duration: 1.2, delay: 0.2 }}
-              className="mt-4 text-3xl md:text-6xl font-light uppercase text-noir-text"
+              className="mt-4 text-2xl sm:text-3xl md:text-6xl font-light uppercase text-noir-text whitespace-nowrap max-w-[92vw]"
             >
               Luxury Racing
             </motion.h1>
@@ -93,13 +96,13 @@ export function LoadingScreen() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.6 }}
-              className="mt-6 text-noir-muted text-xs md:text-sm tracking-[0.3em] uppercase"
+              className="mt-5 md:mt-6 text-noir-muted text-[10px] md:text-sm tracking-[0.2em] md:tracking-[0.3em] uppercase leading-relaxed max-w-[88vw] md:max-w-none"
             >
               {tagline}
             </motion.p>
 
-            {/* Progress bar */}
-            <div className="mt-10 w-64 md:w-80 h-px bg-noir-border overflow-hidden">
+            {/* Progress bar — narrower on small phones */}
+            <div className="mt-8 md:mt-10 w-52 sm:w-64 md:w-80 h-px bg-noir-border overflow-hidden">
               <motion.div
                 initial={{ x: "-100%" }}
                 animate={{ x: "0%" }}

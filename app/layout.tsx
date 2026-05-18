@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { CarCursor } from "@/components/CarCursor";
+import { AnimatedBackground } from "@/components/AnimatedBackground";
 
 const sans = Inter({
   subsets: ["latin"],
@@ -48,6 +49,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${sans.variable} ${mono.variable} ${display.variable}`}>
       <body className="bg-noir-bg text-noir-text font-sans antialiased min-h-screen flex flex-col">
+        {/* Subtle luxury animated background — sits behind every page,
+            covered by sections that have their own bg (e.g. the hero). */}
+        <AnimatedBackground />
         {/* Custom hypercar cursor (auto-disables on touch devices). */}
         <CarCursor />
         <Navbar />
