@@ -67,9 +67,13 @@ export function LoadingScreen() {
           <div className="md:hidden absolute inset-0">
             <VideoPlaceholder className="w-full h-full" />
           </div>
-          {/* Dark overlay */}
-          <div className="absolute inset-0 bg-noir-bg/60" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,rgba(0,0,0,0.85)_100%)]" />
+          {/* Dark overlay.
+              Mobile: heavy dim (60% flat + radial 85%) so the animated
+              VideoPlaceholder underneath reads as intentional mood lighting.
+              Desktop (md+): much lighter (28% flat + radial 55%) so the
+              actual loading-car video shines through clearly. */}
+          <div className="absolute inset-0 bg-noir-bg/60 md:bg-noir-bg/28" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,rgba(0,0,0,0.85)_100%)] md:bg-[radial-gradient(ellipse_at_center,transparent_35%,rgba(0,0,0,0.55)_100%)]" />
 
           {/* Centered content.
               Mobile text sizes are dialed down + tracking tightened so
