@@ -18,7 +18,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { SafeVideo } from "./SafeVideo";
+import { SafeVideo, VideoPlaceholder } from "./SafeVideo";
 
 const TAGLINES = [
   "Initializing Hyper Performance",
@@ -54,11 +54,19 @@ export function LoadingScreen() {
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           className="fixed inset-0 z-[100] bg-noir-bg overflow-hidden"
         >
-          {/* Background video / fallback */}
-          <SafeVideo
-            src="/videos/loading-car.mp4"
-            className="absolute inset-0 w-full h-full"
-          />
+          {/* Desktop background: the loading-car video.
+              Mobile (< 768 px): just the animated dark VideoPlaceholder.
+              iOS Safari often blocks autoplay even at 3.5 MB; the gentle
+              red+gold drift looks intentional and avoids a frozen frame. */}
+          <div className="hidden md:block absolute inset-0">
+            <SafeVideo
+              src="/videos/loading-car.mp4"
+              className="absolute inset-0 w-full h-full"
+            />
+          </div>
+          <div className="md:hidden absolute inset-0">
+            <VideoPlaceholder className="w-full h-full" />
+          </div>
           {/* Dark overlay */}
           <div className="absolute inset-0 bg-noir-bg/60" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,rgba(0,0,0,0.85)_100%)]" />
